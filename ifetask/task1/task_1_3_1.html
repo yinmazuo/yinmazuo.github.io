@@ -6,7 +6,7 @@
 	<style type="text/css">
 		#main {
 			min-width: 550px;
-			padding: 20px;
+			padding: 20px 160px 20px 240px;
 			background-color: #eee;
 			border: 1px solid #999;
 			overflow: hidden;
@@ -21,20 +21,23 @@
 		}
 		img {width: 80px;height: 80px;}
 		#mid {
-			margin: 0 140px 0 220px;
+			width: 100%;
 		}
 		#left {
 			width: 200px;
 			margin-left: -100%;
+			left: -220px;
 		}
 		#right {
 			margin-left: -120px;
+			right: -140px;
 			width: 120px;
 		}
 		#right img {
 			float: left;
 			margin-bottom: 20px;
 		}
+		#right img:last-child {margin-bottom: 0;}
 	</style>
 </head>
 <body>
