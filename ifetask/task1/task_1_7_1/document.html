@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<style type="text/css">
+		.map-inner > ul {
+			margin: 0 40px 0 70px;
+		}
+		.map-inner > ul > li {
+			position: relative;
+			float: left;
+			display: block;
+			width: 240px;
+			height: 32px;
+			padding-left: 10px;
+			margin-right: 30px;
+			background-color: #fff;
+		}
+		.map-inner > ul > li input {
+			float: left;
+			width: 210px;
+			height: 32px;
+			color: #A2A2A2;
+			border: none;
+		}
+		.map-inner > ul > li > a {
+			position: relative;
+			top: 6px;
+			left: 6px;
+			float: left;
+			display: block;
+			width: 18px;
+			height: 18px;
+			text-align: center;
+			color: #fff;
+			background-color: #E74E49;
+		}
+		.map-inner .search-city {
+			text-align: center;
+			line-height: 28px;
+			color: #fff;
+			padding-left: 0;
+			background-color: #E74E49;
+		}
+		.map-inner > ul > li select {
+			width: 240px;
+			height: 30px;
+		}
+		.map-inner > ul > li select i {
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="map-inner">
+		<h3>查找新世界城市活动信息</h3>
+		<hr>
+		<p>每个城市有不同的活动信息，您自主查询您所需要了解的城市</p>
+		<ul>
+			<li class="sele-country">
+				<select>
+					<option><i class="fa fa-check fa-1x">中国</i></option>
+					<option><i></i>美国</option>
+					<option><i></i>韩国</option>
+				</select>
+			</li>
+			<li class="sele-province">
+				<input type="text" value="省份"></input>
+				<a href="#" class="fa fa-angle-down fa-1x"></a>
+			</li>
+			<li class="sele-city">
+				<input type="text" value="城市"></input>
+				<a href="#" class="fa fa-angle-down fa-1x"></a>
+			</li>
+			<li class="search-city">
+				搜&nbsp;&nbsp;&nbsp;&nbsp;索
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
