@@ -47,16 +47,25 @@
 					<ul>
 						<li class="sele-country">
 							<input type="text" value="中国"></input>
-							<a href="#"></a>
+							<a href="#" class="fa fa-angle-down fa-1x"></a>
 						</li>
 						<li class="sele-province">
 							<input type="text" value="省份"></input>
-							<a href="#"></a>
-							
+							<a href="#" class="fa fa-angle-down fa-1x"></a>
+							<div class="options">
+								<ul>
+									<li><i class="fa fa-check fa-1x"></i><a href="#">北京市</a></li>
+									<li><i></i><a href="#">上海市</a></li>
+									<li><i></i><a href="#">安徽省</a></li>
+									<li><i></i><a href="#">山西省</a></li>
+									<li><i></i><a href="#">浙江省</a></li>
+									<li><i></i><a href="#">江苏省</a></li>
+								</ul>	
+							</div>
 						</li>
 						<li class="sele-city">
 							<input type="text" value="城市"></input>
-							<a href="#"></a>
+							<a href="#" class="fa fa-angle-down fa-1x"></a>
 						</li>
 						<li class="search-city">
 							搜&nbsp;&nbsp;&nbsp;&nbsp;索
@@ -130,16 +139,70 @@
 				<hr>
 				<p>新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情，那就不要犹豫，快来加入我们，成为改变所有人生活的人。</p>
 			</div>
-			<div class="vol-clasue">
-				
-			</div>
-			<div class="vol-form">
-				
-			</div>
+			<div class="vol-content">
+				<div class="vol-clasue">
+					<div class="agreements">
+						<h4>新世界志愿者协议</h4>
+						<p>加入新世界志愿者人员必须遵守中华人民共和国相关法律法规，并且本着平等互利的原则。</p>
+						<a href="#" class="fa  fa-angle-down fa-1x">&nbsp;more</a>
+					</div>
+					<div class="rights">
+						<h4>新世界志愿者权利</h4>
+						<p>新世界志愿者享受新世界内部所有资源共享的权利，并且享受所在地新世界活动的优先参与资格</p>
+						<a href="#" class="fa  fa-angle-down fa-1x">&nbsp;more</a>
+					</div>
+					<div class="more-clasues">
+						<h4>更多条款</h4>
+						<a href="#" class="fa  fa-angle-down fa-1x">&nbsp;more</a>
+					</div>
+				</div>
+				<div class="vol-form">
+					<form>
+						<div class="fields">
+							<p class="row">
+								<label for="name">姓名：</label>
+								<input type="text" id="name" name="name"></input>
+							</p>
+							<p class="row">
+								<label for="age">年龄：</label>
+								<input type="text" id="age" name="age"></input>
+							</p>
+							<p class="row">
+								<label for="contact">联系方式：</label>
+								<input type="text" id="contact" name="contact"></input>
+							</p>
+							<p class="row">
+								<label for="address">联系地址：</label>
+								<input type="text" id="address" name="address"></input>
+							</p>
+							<p class="rowspan">
+								<label for="textarea">请简单描述您描述的生活：</label>
+								<textarea id="textarea"></textarea>
+							</p>
+							<input type="submit" value="提交申请" class="submit"></input>
+						</div>
+					</form>
+				</div>
+			</div>	
 		</div>
 	</main>
 	<footer id="footer">
-		
+		<div class="footer-inner">
+			<h3>联系我们</h3>
+			<p>为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯，也可以通过以下任何方式关注我们的动态</p>
+			<p>
+				<input type="text" class="footer-input" value="sonme@email.com"></input>
+				<input type="submit" value="提交" class="email-submit"></input>
+			</p>
+			<span>
+				<a href="#" class="fa fa-qq"></a>
+				<a href="#" class="fa fa-weibo"></a>
+				<a href="#" class="fa fa-twitter"></a>
+				<a href="#" class="fa fa-google"></a>
+			</span>
+		</div>
+		<small>@新世界</small>
+		<a href="#header">Back&nbsp;to&nbsp;top</a>
 	</footer>
 </body>
 </html>
