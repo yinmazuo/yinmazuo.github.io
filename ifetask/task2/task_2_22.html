@@ -76,36 +76,45 @@
 				}
 			}
 
-			btn.onclick = function (e){	  //使用代理
-
-				if (showQueue.length == 0) { //判断是否正在遍历，如果是，则等待遍历结束
-					switch (e.target.id) {  //判断点击的按钮是哪个
-						case "pre" : 
-						preorder(root);										
-						break;
-						case "in" : 					
-						inorder(root);										
-						break;
-						case "post" : 					
-						postorder(root);										
-						break;
-					}
-					show(); //showQueue中待显示节点入队完毕并开始显示
-				} else {
-					alert("正在进行二叉树遍历，请等待……（没错，我偷懒了！）");//没想好怎么处理停止遍历
+			btn.onclick = function (e){	 		
+				if (showQueue.length > 0) { //如果队列非空即正在遍历
+					showQueue = []; //清空队列
+					clearTimeout(timer); //清除定时器
+					preClear(root); //清除上一次遍历的残留蓝色
 				}
-				
+
+				switch (e.target.id) {  //判断点击的按钮是哪个
+					case "pre" : 
+					preorder(root);										
+					break;
+					case "in" : 					
+					inorder(root);										
+					break;
+					case "post" : 					
+					postorder(root);										
+					break;
+				}
+				show(); //showQueue中待显示节点入队完毕并开始显示
+
 				function show() {
 					var head = showQueue.shift(); //出队
 					if (head) {
 						head.style.backgroundColor = "#0000ff";//显示蓝色
-						setTimeout(function(){
+						timer = setTimeout(function(){
 							head.style.backgroundColor = "#fff";//1秒后节点的蓝色变为白色
 							show(); //递归调用show，使要显示的节点不停出队显示，直至为空
 						}, 1000);
 					}
 				}
-							
+
+				function preClear(node) {	//先序遍历清除蓝色
+					if (!(node == null)) {	
+						node.style.backgroundColor = "#fff";			
+						arguments.callee(node.firstElementChild);		
+						arguments.callee(node.lastElementChild);	
+					}
+				}		
+						
 			};
 		};
 	</script>
