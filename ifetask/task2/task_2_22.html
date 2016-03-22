@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>task_2_22</title>
+	<style type="text/css">
+		* { margin: 0; padding: 0;}
+		body {background-color: #fff;}
+		div {
+			border: 1px solid #000;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			background-color: #fff;
+		}
+		.four {
+			width: 50px;
+			height: 30px;
+			margin: 5px;
+		}
+		.three {
+			width: 120px;
+			height: 60px;
+			margin: 8px;	
+		}
+		.two {
+			width: 270px;
+			height: 100px;
+			margin: 10px;
+		}
+		.one {
+			width: 600px;
+			height: 200px;
+			margin: 20px;	
+		}
+		
+		button {
+			width: 80px;
+			height: 30px;
+		}
+		#btn {
+			float: left;
+			position: relative;
+			left: 20px;
+			border: none;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+			var root = document.getElementsByClassName("one")[0],
+				btn = document.getElementById("btn"),
+				showQueue = [];
+
+			function inorder(node) {	//中序遍历
+				if (!(node == null)) {				
+					arguments.callee(node.firstElementChild);
+					showQueue.push(node);             //showQueue是要显示的节点的队列
+					arguments.callee(node.lastElementChild);	
+				}
+			}
+
+			function preorder(node) {	//先序遍历
+				if (!(node == null)) {	
+					showQueue.push(node);			
+					arguments.callee(node.firstElementChild);		
+					arguments.callee(node.lastElementChild);	
+				}
+			}
+
+			function postorder(node) {	//后序遍历
+				if (!(node == null)) {				
+					arguments.callee(node.firstElementChild);			
+					arguments.callee(node.lastElementChild);						
+					showQueue.push(node);
+				}
+			}
+
+			btn.onclick = function (e){	  //使用代理
+
+				if (showQueue.length == 0) { //判断是否正在遍历，如果是，则等待遍历结束
+					switch (e.target.id) {  //判断点击的按钮是哪个
+						case "pre" : 
+						preorder(root);										
+						break;
+						case "in" : 					
+						inorder(root);										
+						break;
+						case "post" : 					
+						postorder(root);										
+						break;
+					}
+					show(); //showQueue中待显示节点入队完毕并开始显示
+				} else {
+					alert("正在进行二叉树遍历，请等待……（没错，我偷懒了！）");//没想好怎么处理停止遍历
+				}
+				
+				function show() {
+					var head = showQueue.shift(); //出队
+					if (head) {
+						head.style.backgroundColor = "#0000ff";//显示蓝色
+						setTimeout(function(){
+							head.style.backgroundColor = "#fff";//1秒后节点的蓝色变为白色
+							show(); //递归调用show，使要显示的节点不停出队显示，直至为空
+						}, 1000);
+					}
+				}
+							
+			};
+		};
+	</script>
+</head>
+<body>
+	<div class="one">
+		<div class="two">
+			<div class="three">
+				<div class="four"></div>
+				<div class="four"></div>
+			</div>
+			<div class="three">
+				<div class="four"></div>
+				<div class="four"></div>
+			</div>
+		</div>
+		<div class="two">
+			<div class="three">
+				<div class="four"></div>
+				<div class="four"></div>
+			</div>
+			<div class="three">
+				<div class="four"></div>
+				<div class="four"></div>
+			</div>
+		</div>
+	</div>
+	<div id="btn">
+		<button id="pre">先序</button>
+		<button id="in">中序</button>
+		<button id="post">后序</button>
+	</div>	
+</body>
+</html>
