@@ -50,9 +50,9 @@
 	window.onload = function () {
 			var root = document.getElementsByClassName("one")[0],
 				btn = document.getElementById("btn"),
-				showQueue = [], clearObject;
+				showQueue = [], head, timer;
 
-			function inorder(node) {	//中序遍历
+			function inOrder(node) {	//中序遍历
 				if (!(node == null)) {				
 					arguments.callee(node.firstElementChild);
 					showQueue.push(node);             //showQueue是要显示的节点的队列
@@ -60,7 +60,7 @@
 				}
 			}
 
-			function preorder(node) {	//先序遍历
+			function preOrder(node) {	//先序遍历
 				if (!(node == null)) {	
 					showQueue.push(node);			
 					arguments.callee(node.firstElementChild);		
@@ -68,7 +68,7 @@
 				}
 			}
 
-			function postorder(node) {	//后序遍历
+			function postOrder(node) {	//后序遍历
 				if (!(node == null)) {				
 					arguments.callee(node.firstElementChild);			
 					arguments.callee(node.lastElementChild);						
@@ -78,29 +78,29 @@
 
 			btn.onclick = function (e){	 		
 				if (showQueue.length > 0) { //如果队列非空即正在遍历
-					clearObject.style.backgroundColor = "#fff";//清除残留蓝色块
+					head.style.backgroundColor = "#fff";//清除残留蓝色
 					showQueue = []; //清空队列
 					clearTimeout(timer); //清除定时器
 				}
 
+				/*eval(e.target.id + "Order(root);");*/
 				switch (e.target.id) {  //判断点击的按钮是哪个
 					case "pre" : 
-					preorder(root);										
+					preOrder(root);										
 					break;
 					case "in" : 					
-					inorder(root);										
+					inOrder(root);										
 					break;
 					case "post" : 					
-					postorder(root);										
+					postOrder(root);										
 					break;
 				}
 				show(); //showQueue中待显示节点入队完毕并开始显示
 
 				function show() {
-					var head = showQueue.shift(); //出队
+					head = showQueue.shift(); //出队
 					if (head) {
 						head.style.backgroundColor = "#0000ff";//显示蓝色
-						clearObject = head;//储存待清除对象
 						timer = setTimeout(function(){
 							head.style.backgroundColor = "#fff";//1秒后节点的蓝色变为白色
 							show(); //递归调用show，使要显示的节点不停出队显示，直至为空

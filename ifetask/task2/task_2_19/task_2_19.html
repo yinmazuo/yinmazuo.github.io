@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task_2_19</title>
+	<style type="text/css">
+		#btn {
+			width: 800px;
+			height: 60px;
+			margin: 0 auto;
+		}
+		button {
+			width: 80px;
+			height: 30px;
+			margin: 10px;
+		}
+
+		#screen {
+			position: relative;
+			top: 50px;
+			width: 840px;
+			height: 340px;
+			background-color: #000;
+			margin: 0 auto;
+		}
+		
+		#wrap {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			display: flex;
+			display: -webkit-flex;
+			align-items: flex-end;		
+			-webkit-align-items: flex-end;
+		}
+		#wrap > div {
+			float: left;
+			margin: 0;
+			padding: 0;
+			width: 1px;
+		}
+	</style>
+	<script type="text/javascript" src="task_2_19.js"></script>
+</head>
+<body>
+	<div id="btn">
+		<button id="random">随机800</button>
+		<button id="sort">排序</button>
+	</div>
+	<div id="screen">
+		<div id="wrap"></div>
+	</div>
+</body>
+</html>
