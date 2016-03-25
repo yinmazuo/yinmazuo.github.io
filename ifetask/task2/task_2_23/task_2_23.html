@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>task_2_23</title>
+	<style type="text/css">
+		* { margin: 0; padding: 0;}
+		body {background-color: #fff;}
+		div {
+			border: 1px solid #000;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			background-color: #fff;
+		}
+		.four {
+			width: 50px;
+			height: 30px;
+			margin: 5px;
+			font-size: 12px;
+			color: #0000ff;
+		}
+		.three {
+			width: 180px;
+			height: 60px;
+			margin: 8px;
+		}
+		.two {
+			width: 600px;
+			height: 100px;
+			margin: 10px;
+		}
+		.one {
+			width: 1200px;
+			height: 200px;
+			margin: 20px;	
+		}
+		
+		button {
+			width: 80px;
+			height: 30px;
+			margin-left: 10px;
+		}
+		#btn {
+			float: left;
+			position: relative;
+			left: 20px;
+			border: none;
+		}
+		.search {
+			width: 200px;
+			height: 20px;
+			margin-left: 50px;
+		}
+	</style>
+	<script type="text/javascript" src="task_2_23.js"></script>
+</head>
+<body>
+	<div style="border: none;">
+	<div class="one">
+	嘿嘿嘿
+		<div class="two">
+		日本明星
+			<div class="three">
+			女\优
+				<div class="four">苍\井\空</div>
+				<div class="four">泷\泽\萝拉</div>
+				<div class="four">大\桥\未\久</div>
+				<div class="four">波\多\野\结\衣</div>
+			</div>
+			<div class="three">
+			女星
+				<div class="four">水原希子</div>
+				<div class="four">新垣结衣</div>
+			</div>
+		</div>
+		<div class="two">
+		中国明星
+			<div class="three">
+			女星
+				<div class="four">迪丽热巴</div>
+				<div class="four">古力娜扎</div>
+				<div class="four">杨幂</div>
+			</div>
+			<div class="three">
+			男星
+				<div class="four">陈坤</div>
+				<div class="four">夏雨</div>
+			</div>
+			<div class="three">
+			组合
+				<div class="four">TFboys</div>
+				<div class="four">Sunshine</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div id="btn">
+		<button id="pre">先序</button>
+		<button id="post">后序</button>
+		<button id="search">搜索</button>
+	</div>
+	<input type="text" class="search"></input>
+</body>
+</html>
