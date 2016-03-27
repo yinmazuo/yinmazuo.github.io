@@ -20,8 +20,8 @@ window.onload = function () {
 		}
 	}
 
-	btn.onclick = function (e){	 		
-		if (showQueue.length > 0) { //如果队列非空即正在遍历
+	btn.onclick = function (e){	 	
+		if (head) {	
 			head.style.backgroundColor = "#fff";//清除残留色
 			showQueue = []; //清空队列
 			clearTimeout(timer); //清除定时器
@@ -36,7 +36,7 @@ window.onload = function () {
 			postOrder(root);										
 			break;
 			case "search" : 					
-			search();										
+			preOrder(root);		//遍历搜索的方法随意写的，也可以在遍历的过程中输入文字，同样会有效								
 			break;
 		}
 		show(); //showQueue中待显示节点入队完毕并开始显示
@@ -44,23 +44,21 @@ window.onload = function () {
 		function show() {
 			head = showQueue.shift(); //出队
 
-			if (head && head.childNodes[0] != searchKey) {
+			if (head) {
 				head.style.backgroundColor = "#ff0000";//显示色
 				timer = setTimeout(function(){
 					head.style.backgroundColor = "#fff";//节点的红色变为白色
 					show(); //递归调用show，使要显示的节点不停出队显示，直至为空
 				}, 500);
-			} else {
-				showQueue = []; //清空队列
-				clearTimeout(timer); //清除定时器
-			}
+
+				if (head.firstChild.nodeValue.trim() == searchKey.value) {//比较遍历的节点中的文字与输入框文字
+					showQueue = []; //清空队列
+					clearTimeout(timer); //清除定时器
+				}
+			} 
+			
 		}
 
-		function search() {
-			if (showQueue.length  == 0) {
-				preOrder(root);
-			}	
-		}	
 	};
 
 };
