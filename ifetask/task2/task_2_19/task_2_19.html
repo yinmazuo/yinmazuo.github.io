@@ -5,7 +5,7 @@
 	<title>task_2_19</title>
 	<style type="text/css">
 		#btn {
-			width: 800px;
+			width: 1200px;
 			height: 60px;
 			margin: 0 auto;
 		}
@@ -28,6 +28,7 @@
 			position: absolute;
 			top: 20px;
 			left: 20px;
+			margin-bottom: 40px;
 			display: flex;
 			display: -webkit-flex;
 			align-items: flex-end;		
@@ -40,12 +41,23 @@
 			width: 2px;
 			margin-left: 1px;
 		}
+
+		#newNode {
+			width: 200px;
+			height: 20px;
+		}
 	</style>
 	<script type="text/javascript" src="task_2_19.js"></script>
 </head>
 <body>
+	
 	<div id="btn">
-		<button id="random">随机600</button>
+		<input type="text" id="newNode"></input>
+		<button id="leftIn">左侧入</button>
+		<button id="leftOut">左侧出</button>
+		<button id="rightIn">右侧入</button>
+		<button id="rightOut">右侧出</button>
+		<button id="random">随机400</button>
 		<button id="sort">排序</button>
 	</div>
 	<div id="screen">
