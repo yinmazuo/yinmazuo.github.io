@@ -16,9 +16,9 @@
 			position: relative;
 			float: left;
 			margin: 0 auto;
-			width: 1000px;
-			height: 600px;
-			border: 1px solid #000;
+			width: 1000px;	
+			height: 500px;	
+			border: 1px solid #ccc;
 			border-radius: 5px;
 			display: flex;
 			align-items: flex-end;
@@ -33,9 +33,10 @@
 		}
 		.aqi-chart-wrap > div {
 			position: relative;
-			box-sizing: border-box;
-			float: left;	
-			margin: 0 auto;			
+			box-sizing: border-box;	
+			margin: 0 auto;	
+			transform-origin: bottom;
+			animation: upIn 1s ease-out 0s forwards;		
 		}
 		.aqi-chart-wrap > div:hover {
 			border: 1px solid #000;
@@ -49,6 +50,14 @@
 		}
 		.month {
 			width: 200px;
+		}
+		@keyframes upIn {
+			0% {
+				transform: scaleY(0.1);
+			}
+			100% {
+				transform: scaleY(1);
+			}
 		}
 		@keyframes downIn {
 			0% {
