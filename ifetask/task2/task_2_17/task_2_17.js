@@ -206,6 +206,7 @@ function createDiv(height, className){
 
   div.onmouseover = function () {
     tooltip.innerHTML = height;
+    tooltip.style.backgroundColor = color;
     tooltip.className = "tooltip";
     div.appendChild(tooltip);
   };

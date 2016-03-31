@@ -17,11 +17,12 @@
 			float: left;
 			margin: 0 auto;
 			width: 1000px;	
-			height: 500px;	
+			height: 600px;	
 			border: 1px solid #ccc;
 			border-radius: 5px;
 			display: flex;
 			align-items: flex-end;
+			justify-content: center;
 		}
 		
 		h2 {
@@ -32,9 +33,7 @@
 			font-size: 24px;
 		}
 		.aqi-chart-wrap > div {
-			position: relative;
 			box-sizing: border-box;	
-			margin: 0 auto;	
 			transform-origin: bottom;
 			animation: upIn 1s ease-out 0s forwards;		
 		}
@@ -61,27 +60,25 @@
 		}
 		@keyframes downIn {
 			0% {
-				top: -70px;
+				left: -80px;
 				opacity: 0;
 			}
 			100% {
-				top: -50px;
+				left: -60px;
 				opacity: 1;
 			}
 		}
 		.tooltip {
 			position: absolute;
-			top: -50px;
-			left: 50%;
-			margin-left: -25px;
-			border-radius: 5px;
+			top: 5px;
+			left: -60px;
+			border-radius: 5px 0 0 5px;
 			width: 50px;
 			height: 30px;
 			text-align: center;
 			line-height: 30px;
 			font-size: 14px;
 			color: #000;
-			background-color: #ccc;
 			z-index: 10;
 			opacity: 0;
 			animation: downIn 1s ease 0s forwards; 
@@ -89,13 +86,13 @@
 		
 		.tooltip::after {
 			border: solid transparent;
-			border-top-color: #ccc;
-			border-width: 10px;
+			border-left-color: #ccc; 
+			border-width: 15px;
 			content: " ";
 			width: 0;
 			position: absolute;
-			top: 100%;
-			right: 15px;
+			top: 0;
+			left: 99%;
 		}
     </style>
     <script src="task_2_17.js"></script>
