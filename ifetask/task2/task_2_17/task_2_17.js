@@ -195,18 +195,18 @@ function initAqiChartData() {
  * 创建柱形
  */
 function createDiv(height, className){
-  var color = randomColor(),  
+  var bgc = randomColor(),  
       div = document.createElement("div");
 
   div.style.height = height + "px";
-  div.style.backgroundColor = color;
+  div.style.backgroundColor = bgc;
   div.className = className;
 
   var tooltip = document.createElement("div");
 
   div.onmouseover = function () {
     tooltip.innerHTML = height;
-    tooltip.style.backgroundColor = color;
+    tooltip.style.backgroundColor = bgc;
     tooltip.className = "tooltip";
     div.appendChild(tooltip);
   };

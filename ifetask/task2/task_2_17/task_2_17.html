@@ -58,7 +58,7 @@
 				transform: scaleY(1);
 			}
 		}
-		@keyframes downIn {
+		@keyframes leftIn {
 			0% {
 				left: -80px;
 				opacity: 0;
@@ -70,7 +70,7 @@
 		}
 		.tooltip {
 			position: absolute;
-			top: 5px;
+			top: -14px;
 			left: -60px;
 			border-radius: 5px 0 0 5px;
 			width: 50px;
@@ -81,7 +81,7 @@
 			color: #000;
 			z-index: 10;
 			opacity: 0;
-			animation: downIn 1s ease 0s forwards; 
+			animation: leftIn 1s ease 0s forwards; 
 		}
 		
 		.tooltip::after {
