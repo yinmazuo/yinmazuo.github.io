@@ -79,10 +79,11 @@ function renderChart() {
  * 处理成需要的周数据
  */
 function weekAverage(data) {
-  var wData = {}, count = 0;
-  for (var day in data) {
-    ++count;
-    var week = Math.ceil(count/7);
+  var wData = {}, week = 0;
+  for (var day in data) {  
+    if (new Date(day).getDay() == 0) {
+      ++week;
+    } 
     if (wData[week] == null) {
       wData[week] = [];
     }
