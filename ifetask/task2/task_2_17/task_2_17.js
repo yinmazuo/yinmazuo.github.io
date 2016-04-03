@@ -88,12 +88,7 @@ function weekAverage(data) {
     }
     wData[week].push(data[day]);
   }
-  for (var w in wData) {
-    wData[w] = Math.floor(wData[w].reduce(function(prev, cur, index, array){
-      return prev + cur;
-    })/wData[w].length);
-  }
-  return wData;
+  return average(wData);
 }
 /**
  * 处理成需要的月数据
@@ -108,14 +103,20 @@ function monthAverage(data) {
     }
     mData[month].push(data[day]);
   }
-  //遍历生成的新对象，将其属性值分别求平均，再生成新对象
-  for (var m in mData) {
-    mData[m] = Math.floor(mData[m].reduce(function(prev, cur, index, array){
-      return prev + cur;
-    })/mData[m].length);
-  }
-  return mData;
+  return average(mData);
 }
+/**
+ * 求平均值
+ */
+ function average(data) {
+  //遍历对象，将其属性值分别求平均，再生成新对象
+    for (var key in data) {
+      data[key] = Math.floor(data[key].reduce(function(prev, cur, index, array){
+        return prev + cur;
+      })/data[key].length);
+    }
+    return data;
+ }
 
 /**
  * 日、周、月的radio事件点击时的处理函数
