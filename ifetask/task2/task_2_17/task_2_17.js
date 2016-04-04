@@ -80,16 +80,15 @@ function renderChart() {
  */
 function weekAverage(data) {
   var wData = {}, week = 1;
-  for (var day in data) {  
-    if (new Date(day).getDay() == 0) {
-      ++week;
-    } 
+  for (var day in data) {   
     if (wData[week + "周"] == null) {
       wData[week + "周"] = [];
     }
     wData[week + "周"].push(data[day]);
+    if (new Date(day).getDay() == 0) {
+      ++week;
+    }
   }
-  console.log(wData);
   return average(wData);
 }
 /**
