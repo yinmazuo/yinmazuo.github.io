@@ -43,6 +43,7 @@ function runSort(){
 	var arr = [];
 	//因为排序时使用shift方法，在此将类对象数组转换成纯数组，有点迟钝了==但是不想改排序函数
 	for (var i = 0;i < div.length;i++) {
+		div[i].style.marginLeft = "1px";
 		arr.push(div[i]);
 	}
 	qSort.call(this, arr);
@@ -114,13 +115,21 @@ function qSort(list) {
 	var lesser = [],
 		greater = [],
 		pivot = list.shift();
+	if (pivot) {
+		pivot.style.backgroundColor = "#0f0";
+	}
 	if (list.length == 0) {
 		return [];
+	} else {
+		for (var i = list.length - 1; i >= 0; i--) {
+			list[i].style.backgroundColor = "#0f0";
+		}
 	}
+	pivot.style.backgroundColor = "#f00";
 	sort();
-	
 	function sort() {	
-		var head = list.shift();		
+		var head = list.shift();
+		head.style.backgroundColor = "#00f";	
 		if (parseInt(head.style.height) < 
 			parseInt(pivot.style.height)) {
 			try {transform(head, pivot);} catch(ex) {}
@@ -132,7 +141,9 @@ function qSort(list) {
 		if (list.length > 0) {
 			setTimeout(sort, 50);				
 		} else {
-			qSort(lesser).concat(pivot, qSort(greater));
+			pivot.style.backgroundColor = "#0f0";
+			head.style.backgroundColor = "#0f0";
+			return qSort(lesser).concat(pivot, qSort(greater));
 		}
 	}
 	return [];
