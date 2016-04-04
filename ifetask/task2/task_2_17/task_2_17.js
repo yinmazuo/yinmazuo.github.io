@@ -71,7 +71,7 @@ function renderChart() {
   wrap.innerHTML = "";
   //遍历对象添加柱形
   for (var time in chartData) {
-    var div = createDiv(chartData[time], pageState.nowGraTime);
+    var div = createDiv(time, chartData[time], pageState.nowGraTime);
     wrap.appendChild(div);
   }
 }
@@ -79,16 +79,17 @@ function renderChart() {
  * 处理成需要的周数据
  */
 function weekAverage(data) {
-  var wData = {}, week = 0;
+  var wData = {}, week = 1;
   for (var day in data) {  
     if (new Date(day).getDay() == 0) {
       ++week;
     } 
-    if (wData[week] == null) {
-      wData[week] = [];
+    if (wData[week + "周"] == null) {
+      wData[week + "周"] = [];
     }
-    wData[week].push(data[day]);
+    wData[week + "周"].push(data[day]);
   }
+  console.log(wData);
   return average(wData);
 }
 /**
@@ -99,10 +100,10 @@ function monthAverage(data) {
   //将原始数据以月为单位生成新对象
   for (var day in data) {
     var month = day.slice(5, 7);
-    if (mData[month] == null) {
-      mData[month] = [];
+    if (mData[month + "月"] == null) {
+      mData[month + "月"] = [];
     }
-    mData[month].push(data[day]);
+    mData[month + "月"].push(data[day]);
   }
   return average(mData);
 }
@@ -188,7 +189,7 @@ function initAqiChartData() {
   // 处理好的数据存到 chartData 中
   chartData = aqiSourceData["北京"];
   for (var day in chartData) {
-    var div = createDiv(chartData[day], "day");
+    var div = createDiv(day, chartData[day], "day");
     document.getElementsByClassName("aqi-chart-wrap")[0].appendChild(div);
   }
 }
@@ -196,7 +197,7 @@ function initAqiChartData() {
 /**
  * 创建柱形
  */
-function createDiv(height, className){
+function createDiv(date, height, className){
   var bgc = randomColor(),  
       div = document.createElement("div");
 
@@ -207,7 +208,7 @@ function createDiv(height, className){
   var tooltip = document.createElement("div");
 
   div.onmouseover = function () {
-    tooltip.innerHTML = height;
+    tooltip.innerHTML = "<p>Date:" + date + "<br />AQI:" + height + "</p>";
     tooltip.style.backgroundColor = bgc;
     tooltip.className = "tooltip";
     div.appendChild(tooltip);
