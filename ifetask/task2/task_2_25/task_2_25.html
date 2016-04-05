@@ -11,18 +11,17 @@
 			background-color: #fff;
 		}
 
-		span:hover {
+		li > span:hover {
 			cursor: pointer;
 			color: #0000ff;
 			background-color: #ccc;			
 		}
-		
 		.tooltips {
 			position: absolute;
-			top: 20px;
-			left: 5px;
+			top: 18px;
+			left: -40px;
 			z-index: 10;
-			width: 100px;
+			width: 40px;
 			border: 1px solid #ccc;
 			text-align: center;
 			background-color: #00ff00;
@@ -39,7 +38,16 @@
 			cursor: pointer;
 			background-color: #ccc;
 		}
-
+		
+		#root {
+			border: 1px solid #ccc;
+		}
+		i {
+			display: inline-block;
+			margin-left: 10px;
+			font-style: normal;
+			cursor: pointer;
+		}
 	</style>
 	<script type="text/javascript" src="task_2_25.js"></script>
 </head>
@@ -48,54 +56,46 @@
 		<input type="text" id="search"></input>
 		<button id="searchBtn">搜索</button>
 		<ul id="root">
-			<li><span>LOL</span>
+			<li><span>LOL</span><i>=</i>
 				<ul>
-					<li><span>ADC</span>
+					<li><span>ADC</span><i>=</i>
 						<ul style="display: none;">
-							<li><span>麦林炮手</span></li>
-							<li><span>圣枪游侠</span></li>
-							<li><span>皮城女警</span></li>
+							<li><span>麦林炮手</span><i>=</i></li>
+							<li><span>圣枪游侠</span><i>=</i></li>
+							<li><span>皮城女警</span><i>=</i></li>
 						</ul>
 					</li>
-					<li><span>APC</span>
+					<li><span>APC</span><i>=</i>
 						<ul style="display: none;">
-							<li><span>卡牌大师</span></li>
-							<li><span>光辉女郎</span></li>
-							<li><span>死亡歌颂者</span></li>
+							<li><span>卡牌大师</span><i>=</i></li>
+							<li><span>光辉女郎</span><i>=</i></li>
+							<li><span>死亡歌颂者</span><i>=</i></li>
 						</ul>
 					</li>
-					<li><span>Support</span>
+					<li><span>Support</span><i>=</i>
 						<ul style="display: none;">
-							<li><span>众星之子</span></li>
-							<li><span>蒸汽机器人</span></li>
-							<li><span>牛头酋长</span></li>
+							<li><span>众星之子</span><i>=</i></li>
+							<li><span>蒸汽机器人</span><i>=</i></li>
+							<li><span>牛头酋长</span><i>=</i></li>
 						</ul>
 					</li>
-					<li><span>Top</span>
+					<li><span>Top</span><i>=</i>
 						<ul style="display: none;">
-							<li><span>无双剑姬</span></li>
-							<li><span>波比</span></li>
-							<li><span>提莫</span></li>
+							<li><span>无双剑姬</span><i>=</i></li>
+							<li><span>波比</span><i>=</i></li>
+							<li><span>提莫</span><i>=</i></li>
 						</ul>
 					</li>
-					<li><span>Jungle</span>
+					<li><span>Jungle</span><i>=</i>
 						<ul style="display: none;">
-							<li><span>雪人骑士</span></li>
-							<li><span>盲僧</span></li>
-							<li><span>赵信</span></li>
+							<li><span>雪人骑士</span><i>=</i></li>
+							<li><span>盲僧</span><i>=</i></li>
+							<li><span>赵信</span><i>=</i></li>
 						</ul>
 					</li>
 				</ul>
 			</li>
 		</ul>
 	</div>
-	<div  id="tool" style="display: none;">
-		<div class='tooltips'>
-			<div id="addChildNode">添加子节点</div>
-			<div id="removeNode">删除该节点</div>
-			<div id="fold">折叠</div>
-			<div id="spread">展开</div>
-		</div>
-	</div>	
 </body>
 </html>
