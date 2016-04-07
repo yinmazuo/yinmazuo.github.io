@@ -5,13 +5,16 @@
 	<title>test</title>
 	<script type="text/javascript">
 	  window.onmessage = function (e) {
+	  	console.log(e.origin);
+	  	console.log(e.source);
 	  	var bbb = {
 			a: "hahah",
 			b: "bilibili",
 			c: "zzzzzz"
 		};
 	    if (e.data === "true") {
-	    	return event;
+	    	console.log(bbb);
+	    	return bbb;
 	    }
 	  };
 	</script>
