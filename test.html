@@ -5,7 +5,14 @@
 	<title>test</title>
 	<script type="text/javascript">
 	  window.onmessage = function (e) {
-	    alert(e.data);
+	  	var event = {
+			a: "hahah",
+			b: "bilibili",
+			c: "zzzzzz"
+		};
+	    if (e.data === "true") {
+	    	return event;
+	    }
 	  };
 	</script>
 </head>
