@@ -1,38 +1,36 @@
 /*
 *事件工具
 */
-(function eventUtil() {
-	event = {
+var eve = (function (){
+	var myeve = {
 		addListener: null,
 		removeListener: null
-	}
+	};
 
 	if (window.addEventListener) {
-		event.addListener = function (element, type, handler) {
+		myeve.addListener = function (element, type, handler) {
 			element.addEventListener(type, handler, false);
 		};
-		event.removeListener = function (element, type, handler) {
+		myeve.removeListener = function (element, type, handler) {
 			element.removeEventListener(type, handler, false);
 		};
 	} else if (document.attachEvent) {
-		event.addListener = function (element, type, handler) {
+		myeve.addListener = function (element, type, handler) {
 			element.attachEvent("on" + type, handler);
 		};
-		event.removeListener = function (element, type, handler) {
+		myeve.removeListener = function (element, type, handler) {
 			element.detachEvent("on" + type, handler);
 		};
 	} else {
-		event.addListener = function (element, type, handler) {
+		myeve.addListener = function (element, type, handler) {
 			element["on" + type] = handler;
 		};
-		event.removeListener = function (element, type, handler) {
-			element["on" + type] = null;
+		myeve.removeListener = function (element, type, handler) {
+			if (handler instanceof Function) {element["on" + type] = null;}			
 		};		
-	}
-
-	return event;
+	}	
+	return myeve;	
 })();
-
 /*
 *选择器
 */
@@ -78,7 +76,7 @@ var testTxt = {
 		wrong: "手机格式不正确",
 		status: false
 	},
-}
+};
 
 /*
 *提交按钮添加点击事件
@@ -88,13 +86,16 @@ function submitHandle(e) {
 		status = false;
 	for (var i = 0, length = inputs.length;i < length-1;i++) {
 		test(inputs[i]);	
-		if (testTxt[inputs[i].id].status == false) {	
-			if (status == false) {status = true;}	
+		if (testTxt[inputs[i].id].status === false) {	
+			if (status === false) {status = true;}	
 			e.preventDefault();			
 		}
 	}
-	if (status) {alert("输入信息有误！");return ;}
-	alert("提交成功！");
+	if (status) {
+		window.alert("输入信息有误！");
+		return ;
+	}
+	window.alert("提交成功！");
 }
 /*
 *填写检测
@@ -104,7 +105,7 @@ function test(target) {
 		color = "",
 		pattern = testTxt[target.id].pattern;
 
-	if ((target.id == "confirmPsw") && ($("#password").value != "")) {
+	if ((target.id === "confirmPsw") && ($("#password").value !== "")) {
 		pattern = new RegExp($("#password").value);	
 	}
 	if (pattern.test(target.value)) {
@@ -123,10 +124,11 @@ function test(target) {
 *创建提示文本区域
 */
 function addTooltip(target, tooltipText, color) {
+	var span;
 	if (target.parentNode.getElementsByTagName("span").length > 0) {
-		var span = target.parentNode.getElementsByTagName("span")[0];
+		span = target.parentNode.getElementsByTagName("span")[0];
 	} else {
-		var span = document.createElement("span");
+		span = document.createElement("span");
 	}	
 	span.innerHTML = tooltipText;
 	span.style.color = color;
@@ -136,17 +138,20 @@ function addTooltip(target, tooltipText, color) {
 *添加事件及初始化
 */
 function init() {
-	var inputs = $("#form").getElementsByTagName("input");
+	var inputs = $("#form").getElementsByTagName("input"),
+		fn = function (input) {
+			eve.addListener(input, "focus", function (e) {
+				var tooltipText = testTxt[e.target.id].init;
+				addTooltip(e.target, tooltipText, "#aaa");
+			});
+			eve.addListener(input, "blur", function (e) {
+				test(e.target);
+			});
+		};
 	for (var i = 0, length = inputs.length;i < length-1;i++) {
-		event.addListener(inputs[i], "focus", function (e) {
-			var tooltipText = testTxt[e.target.id].init;
-			addTooltip(e.target, tooltipText, "#aaa");
-		});
-		event.addListener(inputs[i], "blur", function (e) {
-			test(e.target);
-		});
+		fn(inputs[i]);
 	}
-	event.addListener($("#submit"), "click", submitHandle);
+	eve.addListener($("#submit"), "click", submitHandle);
 }
 
 init();
