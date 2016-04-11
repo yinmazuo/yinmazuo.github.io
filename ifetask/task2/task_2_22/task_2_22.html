@@ -22,7 +22,7 @@
 		.three {
 			width: 120px;
 			height: 60px;
-			margin: 8px;	
+			margin: 8px;
 		}
 		.two {
 			width: 270px;
@@ -32,9 +32,9 @@
 		.one {
 			width: 600px;
 			height: 200px;
-			margin: 20px;	
+			margin: 20px;
 		}
-		
+
 		button {
 			width: 80px;
 			height: 30px;
@@ -53,30 +53,30 @@
 				showQueue = [], head, timer;
 
 			function inOrder(node) {	//中序遍历
-				if (!(node == null)) {				
+				if (!(node == null)) {
 					arguments.callee(node.firstElementChild);
 					showQueue.push(node);             //showQueue是要显示的节点的队列
-					arguments.callee(node.lastElementChild);	
+					arguments.callee(node.lastElementChild);
 				}
 			}
 
 			function preOrder(node) {	//先序遍历
-				if (!(node == null)) {	
-					showQueue.push(node);			
-					arguments.callee(node.firstElementChild);		
-					arguments.callee(node.lastElementChild);	
+				if (!(node == null)) {
+					showQueue.push(node);
+					arguments.callee(node.firstElementChild);
+					arguments.callee(node.lastElementChild);
 				}
 			}
 
 			function postOrder(node) {	//后序遍历
-				if (!(node == null)) {				
-					arguments.callee(node.firstElementChild);			
-					arguments.callee(node.lastElementChild);						
+				if (!(node == null)) {
+					arguments.callee(node.firstElementChild);
+					arguments.callee(node.lastElementChild);
 					showQueue.push(node);
 				}
 			}
 
-			btn.onclick = function (e){	 		
+			btn.onclick = function (e){
 				if (showQueue.length > 0) { //如果队列非空即正在遍历
 					head.style.backgroundColor = "#fff";//清除残留蓝色
 					showQueue = []; //清空队列
@@ -85,14 +85,14 @@
 
 				/*eval(e.target.id + "Order(root);");*/
 				switch (e.target.id) {  //判断点击的按钮是哪个
-					case "pre" : 
-					preOrder(root);										
+					case "pre" :
+					preOrder(root);
 					break;
-					case "in" : 					
-					inOrder(root);										
+					case "in" :
+					inOrder(root);
 					break;
-					case "post" : 					
-					postOrder(root);										
+					case "post" :
+					postOrder(root);
 					break;
 				}
 				show(); //showQueue中待显示节点入队完毕并开始显示
@@ -107,7 +107,7 @@
 						}, 1000);
 					}
 				}
-						
+
 			};
 		};
 	</script>
@@ -139,6 +139,6 @@
 		<button id="pre">先序</button>
 		<button id="in">中序</button>
 		<button id="post">后序</button>
-	</div>	
+	</div>
 </body>
 </html>

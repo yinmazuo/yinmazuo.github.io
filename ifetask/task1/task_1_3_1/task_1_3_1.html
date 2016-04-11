@@ -5,17 +5,18 @@
 	<title>task_1_3_1</title>
 	<style type="text/css">
 		#main {
-			min-width: 550px;
-			padding: 20px 160px 20px 240px;
-			background-color: #eee;
-			border: 1px solid #999;
 			overflow: hidden;
+			min-width: 640px;
+			box-sizing: border-box;
+			padding: 20px 160px 20px 240px;
+			border: 1px solid #999;
+			background-color: #eee;
 		}
 		#mid, #left, #right {
 			position: relative;
 			float: left;		
 			box-sizing: border-box;/*修正盒模型*/
-			padding: 19px;  /*修正盒模型*/
+			padding: 19px;  /*修正盒模型导致的实际内容宽度变小*/
 			border: 1px solid #999;
 			background-color: #fff;
 		}
@@ -28,10 +29,10 @@
 			margin-left: -100%;
 			left: -220px;
 		}
-		#right {
-			margin-left: -120px;
-			right: -140px;
+		#right {	
 			width: 120px;
+			margin-left: -120px;
+			left: 140px;
 		}
 		#right img {
 			float: left;
@@ -53,10 +54,10 @@
 			<h2>FEcoders</h2>
 		</div>
 		<div id="right">
-			<img src="img/1.jpg">
-			<img src="img/2.jpg">
-			<img src="img/3.jpg">
-			<img src="img/4.jpg">
+			<img src="../img/1.jpg">
+			<img src="../img/2.jpg">
+			<img src="../img/3.jpg">
+			<img src="../img/4.jpg">
 		</div>	
 	</div>
 </body>

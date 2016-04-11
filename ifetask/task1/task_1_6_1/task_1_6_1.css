@@ -257,7 +257,7 @@ body {
 	float: left;
 	display: inline-block;
 	height: 44px;
-	font: normal 26px "Microsoft YaHei";
+	font: normal 26px/44px "Microsoft YaHei";
 	color: #fff;
 	padding-left: 8px;
 	border-left: 3px solid #72b16a;
