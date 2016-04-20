@@ -41,13 +41,12 @@ function random50() {
 function runSort(){
 	var div = $("#wrap").getElementsByTagName("div");	
 	var arr = [];
-	//因为排序时使用shift方法，在此将类对象数组转换成纯数组，有点迟钝了==但是不想改排序函数
 	for (var i = 0;i < div.length;i++) {
 		div[i].style.marginLeft = "1px";
 		arr.push(div[i]);
 	}
 	qSort.call(this, arr);
-};
+}
 
 //左入
 function leftIn() {
@@ -57,7 +56,7 @@ function leftIn() {
 	} else {
 		$("#wrap").appendChild(newElement());
 	}
-};
+}
 //左出
 function leftOut() {
 	if ($("#wrap").firstElementChild){
@@ -65,12 +64,12 @@ function leftOut() {
 	} else {
 		alert("无可移除对象！");
 	}
-};
+}
 //右入
 function rightIn() {	
 	if (!newElement()) {return;}
 	$("#wrap").appendChild(newElement());
-};
+}
 //右出
 function rightOut() {
 	if ($("#wrap").lastElementChild){
@@ -78,7 +77,7 @@ function rightOut() {
 	} else {
 		alert("无可移除对象！");
 	}
-};
+}
 
 /*
 *创建带有width以及随机color的div

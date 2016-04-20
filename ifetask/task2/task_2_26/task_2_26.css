@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/*reset---------------*/
+* {margin: 0; padding: 0;}
+a {
+    text-decoration: none;
+    color: #000;
+}
+ol, ul {
+    list-style: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+#universe {
+	float: left;
+}
+
+#controlPanel {
+	float: left;
+	width: 320px;
+	border: 1px solid #00f;
+}
+#spaceshipControlPanel {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	border-bottom: 1px solid #00f;
+}
+.singlePanel {
+	width: 100%;
+	height: 24px;
+	margin-bottom: 5px;
+}
+.singlePanel button {
+	font-size: 12px;
+	width: 60px;
+	height: 20px;
+	border-radius: 3px;
+	margin-left: 5px;
+}
+
+.newSpaceship {
+	margin-top: 20px;
+	height: 24px;
+	border-radius: 3px;
+}
