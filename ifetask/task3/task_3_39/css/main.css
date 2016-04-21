@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+* {padding: 0; margin: 0;}
+
+.sortableTable {
+    margin: 200px auto;
+}
+
+.sortableTable, thead.sortableThead {
+    min-width: 720px;
+	border-collapse: collapse;
+	border: 1px solid #999;
+	border-spacing: 0;
+	text-align: center;
+	font-family: "Microsoft YaHei";
+}
+thead.sortableThead {border: 0.5px;}
+thead.sortableThead > tr > th {
+	color: #fff;
+	background-color: #000;
+}
+thead.sortableThead > tr > th.isSort:hover {
+	cursor: pointer;
+	color: #000;
+	background-color: #fff;
+}
+.sortableTable td, thead.sortableThead th {
+	width: 120px;
+	height: 30px;
+	border: 1px solid #999;
+}
+
+thead.sortableThead > tr > th > span.icon-sort:before {
+	position: relative;
+	left: 10px;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src:    url('fonts/icomoon.eot?jhvr5z');
+    src:    url('fonts/icomoon.eot?jhvr5z#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?jhvr5z') format('truetype'),
+        url('fonts/icomoon.woff?jhvr5z') format('woff'),
+        url('fonts/icomoon.svg?jhvr5z#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-sort:before {
+    content: "\e900";
+}
