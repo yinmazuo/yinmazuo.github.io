@@ -62,10 +62,12 @@ var tableUtil = function() {
 						index;
 					if (target.className === "icon-sort") {target = target.parentNode;}
 					index = target.dataset.index;
-					that.sortFn(bodyData, index);
 					if (!that.status[index]) {
+						bodyData.reverse();//保证排序稳定性
+						that.sortFn(bodyData, index);
 						that.status[index] = true;
 					} else {
+						that.sortFn(bodyData, index);
 						bodyData.reverse();
 						that.status[index] = false;
 					}
