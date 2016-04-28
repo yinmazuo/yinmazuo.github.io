@@ -180,7 +180,7 @@ var calendar= function() {
 				lis[j].innerHTML = dateArr[j].getDate();
 				if (dateArr[j].getMonth() !== this.month) {
 					if (j < firstDay) {
-						if (this.year === new Date (this.startDate).getFullYear()) {
+						if (this.year === new Date (this.startDate).getFullYear() && this.month === 0) {
 							$classList.add(lis[j], "none");
 							lis[j].innerHTML = "";
 							lis[j].style.cursor = "initial";
@@ -188,7 +188,7 @@ var calendar= function() {
 							$classList.add(lis[j], "prevMonth");
 						}						
 					} else {
-						if (this.year === new Date (this.endDate).getFullYear()) {
+						if (this.year === new Date (this.endDate).getFullYear()  && this.month === 11) {
 							$classList.add(lis[j], "none");							
 							lis[j].innerHTML = "";
 							lis[j].style.cursor = "initial";
