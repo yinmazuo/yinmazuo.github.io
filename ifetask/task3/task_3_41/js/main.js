@@ -109,7 +109,8 @@ var calendar= function() {
 						btnHandler("next");
 						that.changeDate();
 					}					
-					that._target();								
+					that._target();	
+					frame.style.visibility = "hidden";//每次选择日期后隐藏日历							
 					return false;
 				}
 				switch (target.className) {
@@ -128,8 +129,7 @@ var calendar= function() {
 					default:
 						break;
 				}	
-				that.changeDate();
-				that._target();					
+				that.changeDate();					
 			}		
 			function btnHandler(d) {	
 				if (d === "prev") {
@@ -261,7 +261,7 @@ var calendar1 = calendar.init({
  	startDate: "2000/01/01",
  	endDate: "2020/12/31",
  	callBack: function() {
- 		console.log("回调方法！");
+ 		alert("回调方法！");
  	}
  });
 
