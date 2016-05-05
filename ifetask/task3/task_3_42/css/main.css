@@ -120,19 +120,20 @@
 	text-align: center;
 }
 .calendar > .calendarBody > ul.daysOfWeek > li {color: #f00;}
-.calendar .days li {
+.calendar .days li.day {
 	color: #999;
 	cursor: pointer;
 }
-.calendar .days li.currMonth {
+.calendar .days li.day.currMonth {
 	color: #000;
 }
-.calendar .days li.inRange {
+.calendar .days li.day.inRange {
 	background-color: #808080;
 	color: #fff;
 }
-.calendar .days li:hover, 
-.calendar .days li.selected {
+.calendar .days li.day:hover, 
+.calendar .days li.day.selected {
 	color: #00f;
 	border: 1px solid #00f;
 }
+

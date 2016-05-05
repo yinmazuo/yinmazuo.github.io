@@ -98,17 +98,15 @@ var calendar = function() {
 				if (dateArr[j].getMonth() !== this.month) {
 					if (j < firstDay) {
 						if (this.year === new Date (this.startDate).getFullYear() && this.month === 0) {//日期下限
-							$classList.add(lis[j], "none");
+							$classList.remove(lis[j], "day");
 							lis[j].innerHTML = "";
-							lis[j].style.cursor = "initial";
 						} else {
 							$classList.add(lis[j], "prevMonth");
 						}						
 					} else {
 						if (this.year === new Date (this.endDate).getFullYear()  && this.month === 11) {//日期上限
-							$classList.add(lis[j], "none");							
+							$classList.remove(lis[j], "day");							
 							lis[j].innerHTML = "";
-							lis[j].style.cursor = "initial";
 						} else {
 							$classList.add(lis[j], "nextMonth");
 						}
