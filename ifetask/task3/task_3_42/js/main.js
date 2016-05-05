@@ -173,6 +173,10 @@ var calendar = function() {
 					var e = event || window.event,
 					target = e.target || e.srcElement;
 					if (target.className === "confirm") {
+						if (that.range.length < 2) {
+							alert("请选择时间段！");
+							return false;
+						}
 						that.output("From " + that.range[0] + " To " + that.range[1]);
 						frame.style.visibility = "hidden";
 					}
@@ -254,25 +258,26 @@ var calendar = function() {
 					var range =that.range;				
 					if (!$classList.contains(target, "day")) {return false;}
 					that.date = parseInt(target.innerHTML);
-					var m = that.month;
+					var m = that.month;	
 					if ($classList.contains(target, "prevMonth")) {
 						--m;
 					}
-					if ($classList.contains(target, "nextMonth")) {
+					if($classList.contains(target, "nextMonth")) {
 						++m;
 					}	
-					var currDate = that.getDate({month: m});
+					var currDate = that.getDate({month: m});	
 					switch (range.length) {
 						case 1:
 						if (!isInGap(0)) {return false;}//是否在允许间隔内
+						goSwitch();
 						if (range[0] > currDate) {//日期在前的为数组第一个元素
 							range.unshift(currDate);
 						} else {
 							range.push(currDate);
 						}
-						that.markDate();
 						break;
 						case 2:	
+						goSwitch();
 						var lis = fbody.querySelectorAll(".day");
 						for (var i = 0, length = lis.length; i < length; i++) {
 							if ($classList.contains(lis[i], "selected")) {
@@ -284,12 +289,11 @@ var calendar = function() {
 						}						
 						range.splice(0, 2, currDate);//清除已选
 						break;
-						default: 
+						default:
+						goSwitch(); 
 						range.push(currDate);						
 					}	
-					if (!$classList.contains(target, "selected")) {
-						$classList.add(target, "selected");
-					}															
+					that.markDate();														
 					function isInGap(x) {
 						var interval = Math.abs(new Date(currDate).getTime() - 
 							new Date(range[x]).getTime()) / (1000 * 60 * 60 * 24);
@@ -298,6 +302,16 @@ var calendar = function() {
 							return false;
 						}
 						return true;
+					}
+					function goSwitch() {
+						if ($classList.contains(target, "prevMonth")) {						
+							that.switchMonth("prev");
+							that.refreshCal();
+						} 
+						if ($classList.contains(target, "nextMonth")) {					
+							that.switchMonth("next");
+							that.refreshCal();
+						}
 					}	
 				}						
 			}			
@@ -318,7 +332,7 @@ var calendar = function() {
 						++m;
 					}
 					currDate = that.getDate({month: m, date: d});											
-					if (currDate > range[0] && currDate < range[1]) {
+					if (currDate > range[0] && range[1] !== undefined && currDate < range[1]) {
 						$classList.add(lis[i], "inRange");
 					}
 					if ((currDate === range[0] || currDate === range[1]) && 
