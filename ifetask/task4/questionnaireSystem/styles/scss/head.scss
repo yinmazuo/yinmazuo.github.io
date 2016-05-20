@@ -1,0 +1,46 @@
+
+#head {
+  $headHeight: 40px;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $headHeight;
+  background-color: $mainColor;
+  color: #fff;
+  h2, h3 {
+    float: left;
+    width: 100px;
+    line-height: $headHeight;
+    margin-left: 100px;
+    text-align: center;
+    font-weight: 400;
+  }
+}
+
+/*#calWrap {
+  $w: 250px;
+  $h: 30px;
+  position: relative;
+  width: $w;
+  height: $h;
+  border: 1px solid #000;
+  margin: 20px;
+  span.icon-plus {
+    cursor: pointer;
+    float: left;
+    display: block;
+    width: $h;
+    height: $h;
+    line-height: $h;
+    text-align: center;
+    font-size: 18px;
+    background-color: $mainColor;
+  }
+  .dateIn {
+    border: none;
+    width: $w - $h;
+    height: $h - 2px;
+  }
+}*/

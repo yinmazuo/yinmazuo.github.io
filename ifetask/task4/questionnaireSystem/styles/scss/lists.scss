@@ -1,0 +1,101 @@
+#lists {
+  $listsColor: #878787;
+
+  position: relative;
+  width: 1000px;
+  margin: 100px auto;
+  background-color: #fff;
+  padding-bottom: 100px;
+  font-size: 14px;
+
+  button.new {
+    cursor: pointer;
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    right: 10px;
+    top: 10px;
+    border: 1px solid $listsColor;
+    color: #fff;
+    background-color: $mainColor;
+  }
+  input[type = "checkbox"], input[type = "button"] {
+    cursor: pointer;
+  }
+  input[type = "button"] {
+    &:hover, &.checked {
+      color: #fff;
+      background-color: $mainColor;
+    }    
+    height: 24px;
+    border-radius: 3px;
+    background-color: #fff;
+    color: $listsColor;
+    border: 1px solid $listsColor;    
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    color: $listsColor;
+    thead {
+      background-color: $mainBgc;
+    }
+    tbody{
+      tr {
+        box-sizing: border-box;
+        border-bottom: 1px solid $listsColor;
+        &:hover, &.checked {
+          background-color: #ccc;
+        }
+        input[type = "button"] {
+          margin-left: 5px;
+        }
+      }
+    }
+    th, td {
+      height: 50px;
+      line-height: 50px;
+      text-align: left;
+      input[type = "checkbox"] {
+        display: block;
+        width: 13px;
+        height: 13px;
+        margin: 0 auto;
+      }
+    }
+    .title {width: 35%;}
+    .time {width: 20%;}
+    .state {
+      width: 10%;
+      &.releasing {color: #0f0;}
+      &.unrelease {color: #00f;}
+    }
+    .handle {
+      width: 30%;
+      input[type = "button"] {
+        width: 80px;
+      }
+    }
+  }
+  div.all {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    input[type = "checkbox"] {
+      position: relative;
+      left: 13.5px;
+      margin-right: 15px;
+      display: inline-block;
+    }
+    span, input[type = "button"] {
+      margin-right: 15px;
+    }
+    input[type = "button"] {
+      &[disabled="disabled"]:hover {
+        background-color: #fff;
+        color: $listsColor;
+      }
+      width: 60px;
+    }
+  }
+}

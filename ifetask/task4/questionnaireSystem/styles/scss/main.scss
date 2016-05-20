@@ -1,0 +1,14 @@
+@import url("reset.scss");
+@import url("fonts.scss");
+$mainColor: #e77408;
+$mainBgc: #EDEDED;
+@import url("head.scss");
+@import url("pop.scss");
+@import url("calendar.scss");
+@import url("lists.scss");
+@import url("edit.scss");
+body {
+  background-color: $mainBgc;
+}
+
+

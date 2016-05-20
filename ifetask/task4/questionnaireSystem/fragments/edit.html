@@ -1,0 +1,79 @@
+<div id="edit">
+  <input type="text" value="这里是标题" class="title">
+  <hr />
+  <div class="questionnaire">
+    <div class="question">
+      <div class="qhead">
+        <span>Q1</span>
+        <input type="text" name="question" value="单选">
+      </div>
+      <div class="qoption">
+        <label class="option">
+          <input type="radio" name="option">
+          <input type="text" value="选项1">
+          <span class="optionDel">删除</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="option">
+          <input type="text" value="选项2">
+          <span class="optionDel">删除</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="option">
+          <input type="text" value="选项3">
+          <span class="optionDel">删除</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="option">
+          <input type="text" value="选项4">
+          <span class="optionDel">删除</span>
+        </label>
+      </div> 
+      <div class="addOption">
+        <span class="icon-plus"></span>
+      </div>
+      <div class="operations">
+        <span class="up">上移</span>
+        <span class="down">下移</span>
+        <span class="clone">复用</span>
+        <span class="del">删除</span>
+      </div>          
+    </div>
+    <div class="question">
+      <div class="qhead">
+        <span>Q2</span>
+        <input type="text" name="question" value="文本">
+      </div>
+      <textarea rows="10" cols="80"></textarea>
+    </div>
+  </div>
+
+  <div class="addWrap">
+    <div class="options">
+      <span class="option radio">
+        <span class="icon-radio-unchecked"></span>单选
+      </span>
+      <span class="option checkbox">
+        <span class="icon-checkbox-checked"></span>多选
+      </span>
+      <span class="option textarea">
+        <span class="icon-file-text"></span>文本
+      </span>
+    </div>
+    <div class="add">
+      <p><span class="icon-plus"></span>&nbsp;添加问题</p>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="dateWrap">
+      <label>
+        截止日期：
+        <input type="text" name="date">
+      </label>      
+    </div>
+    <div class="btns">
+      <button class="save">保存问卷</button>
+      <button class="release">发布问卷</button>
+    </div>
+  </div>
+</div>
