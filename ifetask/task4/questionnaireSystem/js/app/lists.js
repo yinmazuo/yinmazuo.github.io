@@ -172,7 +172,7 @@ define(["html!../fragments/lists.html", "util", "pop"],
       var s = this.listDom.querySelector(".state")
       if ($classList.contains(s, "ended")) {
         viewData.append();
-        viewData.render(listsData[this.id]);
+        //viewData.render(listsData[this.id]);
       } else if ($classList.contains(s, "releasing")) {
         view.append();
         view.render(listsData[this.id]); 
