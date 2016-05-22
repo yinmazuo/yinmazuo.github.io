@@ -162,38 +162,38 @@ define(["html!../fragments/viewData.html", "util", "../lib/echarts.min"], functi
     },
     append: function() {
       document.body.appendChild(viewData);
-      // render({
-      //   title: "test1",
-      //   count: 276,
-      //   id: 1,
-      //   questionnaire: [
-      //     {
-      //       id: 1,
-      //       question: "问题1",
-      //       type: "checkbox",
-      //       options: [{content: "选项1哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈", count: 123}, 
-      //                 {content: "选项2哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈", count: 156}, 
-      //                 {content: "选项3哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈", count: 79}, 
-      //                 {content: "选项4哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈", count: 253}],
-      //     },
-      //     {
-      //       id: 2,
-      //       question: "问题2哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈",
-      //       type: "radio",
-      //       options: [{content: "选项1哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈", count: 100}, 
-      //                 {content: "选项2哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈", count: 156}, 
-      //                 {content: "选项3哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈", count: 79}, 
-      //                 {content: "选项4哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈", count: 253}],
-      //     },
-      //     {
-      //       id: 3,
-      //       question: "问题3哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈",
-      //       type: "textarea",
-      //       answer: "",
-      //       validAnswer: 234
-      //     }
-      //   ]
-      // });
+      render({
+        title: "test1",
+        count: 276,
+        id: 1,
+        questionnaire: [
+          {
+            id: 1,
+            question: "问题1",
+            type: "checkbox",
+            options: [{content: "选项1", count: 123}, 
+                      {content: "选项2", count: 156}, 
+                      {content: "选项3", count: 79}, 
+                      {content: "选项4", count: 253}],
+          },
+          {
+            id: 2,
+            question: "问题2",
+            type: "radio",
+            options: [{content: "选项1", count: 100}, 
+                      {content: "选项2", count: 156}, 
+                      {content: "选项3", count: 79}, 
+                      {content: "选项4", count: 253}],
+          },
+          {
+            id: 3,
+            question: "问题3",
+            type: "textarea",
+            answer: "",
+            validAnswer: 234
+          }
+        ]
+      });
     },
     render: render
   }
