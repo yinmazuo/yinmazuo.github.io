@@ -435,6 +435,8 @@ define(["util"], function(util){
       this.refreshCal();
       this.addEvent();
       this.selectDate();
+      //目标输入框默认时间
+      this.target.value = this.getDate();
     }
   };
 

@@ -7,8 +7,24 @@ $mainBgc: #EDEDED;
 @import url("calendar.scss");
 @import url("lists.scss");
 @import url("edit.scss");
+@import url("view.scss");
+@import url("viewData.scss");
 body {
   background-color: $mainBgc;
 }
 
-
+div.createFirstList {
+  cursor: pointer;
+  margin: 200px auto;
+  width: 200px;
+  height: 80px;
+  background-color: #FFF;
+  font-size: 28px;
+  text-align: center;
+  line-height: 80px;
+  border: 1px solid $mainColor;
+  &:hover {
+    background-color: $mainColor;
+    color: #fff;
+  }
+}

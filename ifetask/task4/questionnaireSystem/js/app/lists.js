@@ -1,32 +1,23 @@
-define(["html!../fragments/lists.html", "util", "pop"], function(lists, util, pop){
+define(["html!../fragments/lists.html", "util", "pop"], 
+  function(lists, util, pop, editHTML){
   var $ = util.$,
       $create = util.$create,
       eve = util.eve,
       $classList = util.$classList,
       listsArr = [],
       count = 0, //问卷计数
+      c = 0,
       lists = lists.querySelector("#lists"),
       state = {
         unrelease: "未发布",
         releasing: "发布中",
         ended: "已结束"
-      };
+      };    
 
-  var data = [{
-      title: "test1",
-      time: "2016/05/19",
-      satet: "releasing",
-      questionnaire: [
-        
-      ]
-    }, {
-      title: "test2",
-      time: "2016/05/20",
-      satet: "releasing",
-      questionnaire: [
-
-      ]
-    }];
+  var listsData = {};
+  var edit = {},
+      view = {},
+      viewData = {};
 
   // 多选删除
   (function(){
@@ -84,57 +75,42 @@ define(["html!../fragments/lists.html", "util", "pop"], function(lists, util, po
 
 
   function List(listData) {
+    this.id = count;
     this.listDom = util.$create("tr");
-    this.title = listData.title || ("标题" + count);
-    this.time = listData.time || "截至日期";
+    this.title = listData.title;
+    this.time = listData.time;
     this.checkbox = $create("input");
-    this.state = state[listData.state] || state.unrelease;
+    this.state = listData.state;
   }
   List.prototype = {
     constructor: List,
     createDom: function() { 
+      $classList.add(this.listDom, "list");
+      this.listDom.innerHTML =
+        "<td><input type='checkbox' name='lists'></td>" +
+        "<td class='title'>" + this.title + "</td>" +
+        "<td class='time'>" + this.time + "</td>" +
+        "<td class='state unrelease'>" + state[this.state] + "</td>" +
+        "<td class='handle'>" +
+          "<input class='edit' type='button' value='编辑'>" +
+          "<input class='del' type='button' value='删除'>" +
+          "<input class='view' type='button' value='查看'>" +
+        "</td>";
+      $("#lists").querySelector("tbody").appendChild(this.listDom);
+      this.bindEvents();               
+    },
+    bindEvents: function() {
       var that = this,
-          checkbox = this.checkbox,
-          edit = $create("input"),
-          del = $create("input"),
-          view = $create("input"),
-          title = $create("td"),
-          time = $create("td"),
-          state = $create("td"),
-          check = $create("td"),
-          handle = $create("td");
-      (function() {
-        edit.value = "编辑";
-        del.value = "删除";
-        view.value = "查看";
-        title.innerHTML = that.title;
-        time.innerHTML = that.time;
-        state.innerHTML = that.state;
-        $classList.add(title, "title");
-        $classList.add(time, "time");
-        $classList.add(state, "state");
-        $classList.add(state, "unrelease");
-        $classList.add(handle, "handle");
-        $classList.add(view, "view");
-        $classList.add(edit, "edit");
-        $classList.add(del, "delete");
-        checkbox.setAttribute("type", "checkbox");
-        checkbox.setAttribute("name", "lists");
-        edit.setAttribute("type", "button");
-        view.setAttribute("type", "button");
-        del.setAttribute("type", "button");
-        handle.appendChild(edit);
-        handle.appendChild(del);
-        handle.appendChild(view);
-        check.appendChild(checkbox);
-        that.listDom.appendChild(check);
-        that.listDom.appendChild(title);
-        that.listDom.appendChild(time);
-        that.listDom.appendChild(state);
-        that.listDom.appendChild(handle);
-        lists.querySelector("tbody").appendChild(that.listDom);
-      })();
-
+          listDom = this.listDom,
+          checkbox = listDom.querySelector("input[type='checkbox']"),
+          edit = listDom.querySelector(".edit"),
+          del = listDom.querySelector(".del"),
+          view = listDom.querySelector(".view"),
+          title = listDom.querySelector(".title"),
+          time = listDom.querySelector(".time"),
+          state = listDom.querySelector(".state"),
+          check = listDom.querySelector(".check"),
+          handle = listDom.querySelector(".handle");
       eve.addListener(del, "click", function(){
         pop.init({
         title: "提示",
@@ -143,11 +119,17 @@ define(["html!../fragments/lists.html", "util", "pop"], function(lists, util, po
         }).show();      
       });
       eve.addListener(checkbox, "click", function(){that.checked();});
+      eve.addListener(edit, "click", function(){that.edit()});
+      eve.addListener(view, "click", function(event){that.view(event)});
     },
-
     del: function() {
       this.listDom.parentNode.removeChild(this.listDom);
-      this.listDom = null;
+      listsData[this.id] = null;
+      --c;
+      if (c === 0) {
+        noneLists();
+        document.body.removeChild(lists);
+      }
     },
 
     checked: function() {
@@ -187,32 +169,91 @@ define(["html!../fragments/lists.html", "util", "pop"], function(lists, util, po
     },
 
     view: function() {
-
+      var s = this.listDom.querySelector(".state")
+      if ($classList.contains(s, "ended")) {
+        viewData.append();
+        viewData.render(listsData[this.id]);
+      } else if ($classList.contains(s, "releasing")) {
+        view.append();
+        view.render(listsData[this.id]); 
+      } else {
+        return false;
+      }          
+      document.body.removeChild(lists);
     },
 
     edit: function() {
-
+      localStorage.setItem("listsData", JSON.stringify(listsData));
+      edit.append();
+      edit.render(listsData[this.id]);      
+      document.body.removeChild(lists);
     }
       
   };
 
+  function noneLists() {
+    var createFirstList = $create("div");
+    createFirstList.className = "createFirstList";
+    createFirstList.innerHTML = "<span class='icon-plus'></span>新建问卷";
+    eve.addListener(createFirstList, "click", function() {
+      document.body.appendChild(lists);
+      document.body.removeChild(createFirstList);
+      newList();
+    });
+    document.body.appendChild(createFirstList);
+  }
 
-  function newList(listData) {
+  function newList() {  
+    ++c;
     ++count;
+    var listData = listsData[count] = {};
+    listData.id = count;
+    listData.title = "标题" + count;
+    listData.time = "截止日期";
+    listData.state = "unrelease";
+    listData.questionnaire = [];
+    listData.count = 0;
+
     var list = new List(listData);
     list.createDom();
   }
-  function f() {
-    for (var i = 0, l = data.length; i < l; i++) {
-      newList(data[i]);
+  
+  eve.addListener(lists.querySelector(".new"), "click", newList);
+
+  function render(qsData) {
+    listsData = JSON.parse(localStorage.getItem("listsData"));
+    var listNodes = lists.querySelectorAll(".list"),
+        index = qsData.id - 1;  
+
+    listsData[qsData.id] = qsData;
+    for (var k in listsData) {
+      if (listsData[k] === null && k < qsData.id) {
+        --index;
+      }
     }
+    listNodes[index].querySelector(".title").innerHTML = qsData.title;
+    listNodes[index].querySelector(".time").innerHTML = qsData.time;
+
+    listNodes[index].querySelector(".state").className = "state " + qsData.state;
+
+    listNodes[index].querySelector(".state").innerHTML = state[qsData.state];
   }
-  eve.addListener(lists.querySelector(".new"), "click", f);
 
 
   return {
+    getViewData: function(m) {
+      viewData = m;
+    },
+    getView: function(m) {
+      view = m;
+    },
+    getEdit: function(m) {
+      edit = m;
+    },
     append: function() {
       document.body.appendChild(lists);
-    }
+    },
+    noneLists: noneLists,
+    render: render
   }
 });
