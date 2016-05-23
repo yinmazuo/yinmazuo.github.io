@@ -248,7 +248,7 @@ define(["html!../fragments/edit.html", "util", "calendar", "pop"],
                 qsData.state = "ended";
                 lists.render(qsData);
               } else {
-                setTimewout(timeOut, 1000);
+                setTimeout(timeOut, 1000);
               }             
             }            
 
